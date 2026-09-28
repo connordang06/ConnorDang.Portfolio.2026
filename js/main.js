@@ -57,8 +57,35 @@ function closeLightbox() {
   document.getElementById("lightbox").classList.remove("open");
 }
 
+// ============================================
+// 3-dot menu (all pages)
+// ============================================
+
+function setupMenu() {
+  const menu = document.querySelector(".menu");
+  if (!menu) return;
+  const toggle = menu.querySelector(".menu-toggle");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("open");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target)) {
+      menu.classList.remove("open");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") menu.classList.remove("open");
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderWorkGrid();
+  setupMenu();
 
   const lightbox = document.getElementById("lightbox");
   if (lightbox) {
