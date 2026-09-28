@@ -1,0 +1,311 @@
+/* ============================================
+   Connor Dang Portfolio — Shared Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Name banner (all pages) ---------- */
+.name-banner {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  width: 190px;
+  z-index: 100;
+  transition: opacity 0.2s ease;
+}
+
+.name-banner:hover {
+  opacity: 0.7;
+}
+
+.name-banner img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Paper-textured pages (landing + contact) ---------- */
+.paper-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../assets/paper-texture.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ---------- Star ring ---------- */
+.star-ring-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(64vmin, 620px);
+  aspect-ratio: 1 / 1;
+}
+
+.star-ring-wrap img {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.star-hotspot {
+  position: absolute;
+  width: 11%;
+  height: 11%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star-hotspot.static {
+  cursor: default;
+}
+
+.star-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  font-weight: 700;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: -0.08em;
+  font-size: clamp(28px, 5vmin, 48px);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.star-hotspot:not(.static):hover .star-label:not(.star-label--work) {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Work star (star 1): enlarged hit area (still centered on the star itself)
+   so the offset label sits inside a clickable zone, not floating outside it.
+   Smaller label text placed up and to the right of the star instead of on it. */
+.star-hotspot--work {
+  width: 34%;
+  height: 30%;
+}
+
+.star-label--work {
+  top: 32%;
+  left: 64%;
+  transform: translate(0, -50%) scale(0.85);
+  font-size: clamp(16px, 2.6vmin, 26px);
+}
+
+.star-hotspot--work:hover .star-label--work {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+/* ---------- Social icons (landing + contact, bottom-left) ---------- */
+.social-icons {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  display: flex;
+  gap: 16px;
+  z-index: 100;
+}
+
+.social-icons a {
+  width: 34px;
+  height: 34px;
+  transition: opacity 0.2s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.6;
+}
+
+.social-icons img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Paper-textured content pages (work + about) ---------- */
+.white-page {
+  min-height: 100vh;
+  background-color: #fff;
+  background-image: url("../assets/paper-texture.jpg");
+  background-repeat: repeat;
+  background-size: 1600px 1600px;
+  background-position: top center;
+}
+
+/* ---------- About page ---------- */
+.about-content {
+  padding-top: 1in;
+  padding-bottom: 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.headshot {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 40px;
+  display: block;
+}
+
+/* All About-page text: Helvetica Regular, tight tracking */
+.about-content,
+.about-content * {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+}
+
+.about-bio {
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.about-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.about-columns h3 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: lowercase;
+  margin-bottom: 14px;
+}
+
+.about-columns ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-columns li {
+  font-size: 15px;
+  line-height: 1.9;
+  text-transform: lowercase;
+}
+
+/* ---------- Work page ---------- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.1in;
+  padding: 120px 0.1in 60px;
+}
+
+.work-item {
+  cursor: pointer;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+
+.work-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.work-item:hover img {
+  transform: scale(1.03);
+}
+
+.work-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #ececec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 13px;
+  text-align: center;
+  padding: 12px;
+}
+
+@media (max-width: 900px) {
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-columns { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+  padding: 40px;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Contact page text ---------- */
+/* name banner sits at top:28px, ~48px tall at 190px wide (0.253 aspect) -> bottom ~76px, plus 1in gap */
+.contact-info {
+  position: fixed;
+  top: calc(76px + 1in);
+  left: 28px;
+  z-index: 100;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: -0.06em;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.contact-info a {
+  text-decoration: underline;
+}
+
+.contact-info a:hover {
+  opacity: 0.6;
+}
