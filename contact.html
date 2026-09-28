@@ -12,10 +12,33 @@
   <img src="assets/name-banner.png" alt="Connor Dang">
 </a>
 
+<div class="menu">
+  <button class="menu-toggle" aria-label="Menu">&#8942;</button>
+  <div class="menu-dropdown">
+    <a href="work.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
 <div class="paper-page">
   <div class="star-ring-wrap">
     <img src="assets/star-ring.png" alt="">
-    <!-- stars are decorative only on this page, no hotspots -->
+
+    <!-- Star 1 (top center) -> Work -->
+    <a class="star-hotspot" href="work.html" style="left:50.31%; top:7.71%;">
+      <span class="star-label">work</span>
+    </a>
+
+    <!-- Star 6 clockwise -> About -->
+    <a class="star-hotspot" href="about.html" style="left:86.60%; top:72.01%;">
+      <span class="star-label">about</span>
+    </a>
+
+    <!-- Star 11 clockwise -> Contact -->
+    <a class="star-hotspot" href="contact.html" style="left:13.13%; top:71.50%;">
+      <span class="star-label">contact</span>
+    </a>
   </div>
 </div>
 
@@ -27,5 +50,6 @@
   </div>
 </div>
 
+<script src="js/main.js"></script>
 </body>
 </html>
