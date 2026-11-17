@@ -3,54 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connor Dang</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Content Manager — Connor Dang</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-<a href="index.html" class="name-banner">
-  <img src="assets/name-banner.png" alt="Connor Dang">
-</a>
+<!-- Decap CMS (formerly Netlify CMS). This page is the editor at /admin —
+     log in with the Netlify Identity account set up for this site, and the
+     form here edits ../data/work.json and uploads images into
+     ../work-images/, committing straight to the GitHub repo. -->
+<script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
 
-<div class="menu">
-  <button class="menu-toggle" aria-label="Menu">&#8942;</button>
-  <div class="menu-dropdown">
-    <a href="work.html">Work</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</div>
+<script>
+  // Sends people straight into login if they land on /admin without a
+  // session, and reloads after they confirm an invite/reset email so the
+  // CMS picks up the fresh session immediately.
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 
-<div class="paper-page">
-  <div class="star-ring-wrap">
-    <img src="assets/star-ring.png" alt="">
-
-    <!-- Star 1 (top center) -> Work -->
-    <a class="star-hotspot" href="work.html" style="left:50.31%; top:7.71%;">
-      <span class="star-label">work</span>
-    </a>
-
-    <!-- Star 6 clockwise -> About -->
-    <a class="star-hotspot" href="about.html" style="left:86.60%; top:72.01%;">
-      <span class="star-label">about</span>
-    </a>
-
-    <!-- Star 11 clockwise -> Contact -->
-    <a class="star-hotspot" href="contact.html" style="left:13.13%; top:71.50%;">
-      <span class="star-label">contact</span>
-    </a>
-  </div>
-</div>
-
-<div class="social-icons">
-  <a href="https://instagram.com/dig1talprint" target="_blank" rel="noopener" aria-label="Instagram">
-    <img src="assets/instagram-icon.png" alt="Instagram">
-  </a>
-  <a href="https://www.linkedin.com/in/connorcdang/" target="_blank" rel="noopener" aria-label="LinkedIn">
-    <img src="assets/linkedin-icon.png" alt="LinkedIn">
-  </a>
-</div>
-
-<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: simple
+
+media_folder: "work-images"
+public_folder: "/work-images"
+
+collections:
+  - name: "work"
+    label: "Work"
+    files:
+      - name: "work"
+        label: "Work Items"
+        file: "data/work.json"
+        description: "Add, remove, reorder, and describe the pieces shown on the Work page."
+        fields:
+          - label: "Pieces"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Description", name: "description", widget: "text", required: false }
